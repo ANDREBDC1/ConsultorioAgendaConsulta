@@ -24,6 +24,6 @@ namespace Consultorio.Dominio.Consultorios.Agendamentos
             get => (StatusAgendamentoEnum) StatusId; 
             set => StatusId = (int) value; 
         }
-        public int TotalDeVagas { get; set; }
+        public int TotalVagas { get; set; }
     }
 }

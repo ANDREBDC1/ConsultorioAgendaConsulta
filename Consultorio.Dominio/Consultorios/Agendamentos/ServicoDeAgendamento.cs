@@ -60,7 +60,9 @@ namespace Consultorio.Dominio.Consultorios.Agendamentos
 
         private string ObterClinicaNome(Agendamento agendamento)
         {
-            return _todosAsClinicas.ObterPor(agendamento.ClinicaId).Nome;
+            return agendamento.ClinicaId == decimal.Zero 
+                ? string.Empty
+                :_todosAsClinicas.ObterPor(agendamento.ClinicaId).Nome;
         }
 
         private string ObterStatusDescricao(Agendamento agendamento)
@@ -94,8 +96,11 @@ namespace Consultorio.Dominio.Consultorios.Agendamentos
             if (agendamentoBanco.Any())
                 throw new Exception($"O paciente {agendamento.NomePaciente} CPF {agendamento.CpfPaciente} já está agendado para a clínica {agendamento.ClinicaNome}, com data {agendamento.DataConsulta.ToString("dd/MM/yyyy")}");
 
-            if (agendamento.TotalDeVagas <= decimal.Zero)
+            if (agendamento.TotalVagas <= decimal.Zero)
                 throw new Exception($"Não há vagas disponível para data {agendamento.DataConsulta.ToString("dd/MM/yyyy")}");
+
+            if (string.IsNullOrWhiteSpace(agendamento.ClinicaNome))
+                throw new Exception("Clínica não informada");
         }
 
         public List<Agendamento> ObterPor(FiltrosAgendamentos filtroAgendamento)

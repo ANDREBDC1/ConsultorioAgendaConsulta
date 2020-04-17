@@ -13,7 +13,7 @@ namespace Consultorio.Infra.EntityConfiguracao.Consultorios.Agendamentos
             Property(c => c.Email).HasMaxLength(100);
             Property(c => c.NomeConvenio).HasMaxLength(200);
             Ignore(c => c.status);
-            Ignore(c => c.TotalDeVagas);
+            Ignore(c => c.TotalVagas);
         }
     }
 }
