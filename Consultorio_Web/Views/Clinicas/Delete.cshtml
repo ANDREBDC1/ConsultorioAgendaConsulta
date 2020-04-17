@@ -1,0 +1,48 @@
+﻿@model Consultorio_Web.ViewsModels.ClinicaViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h4>Deletar</h4>
+
+<h3>Deseja deletar a Clinica?</h3>
+<div>
+    <h4>ClinicaViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cnpj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>

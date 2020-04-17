@@ -1,0 +1,87 @@
+﻿@model Consultorio_Web.ViewsModels.Agendamentos.AgendamentoViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4>Detalhes agendamento</h4>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClinicaNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClinicaNome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusDescricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusDescricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NomePaciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomePaciente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CpfPaciente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CpfPaciente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemPlano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemPlano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroConvenio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroConvenio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeConvenio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeConvenio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataConsulta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataConsulta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

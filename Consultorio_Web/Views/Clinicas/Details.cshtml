@@ -1,0 +1,88 @@
+﻿@model Consultorio_Web.ViewsModels.ClinicaViewModel
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+    <h4>Detalhes da clínica</h4>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cnpj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoViewModel.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoViewModel.Cep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoViewModel.Rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoViewModel.Rua)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoViewModel.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoViewModel.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoViewModel.Bairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoViewModel.Bairro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoViewModel.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoViewModel.Cidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoViewModel.Uf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoViewModel.Uf)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

@@ -1,0 +1,151 @@
+﻿@model Consultorio_Web.ViewsModels.Agendamentos.AgendamentoViewModel
+
+@{
+    ViewBag.Title = "Casdastro de agendamento";
+}
+
+<h4>Adicionar agendamento</h4>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TotalVagas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div id="TotalVagas" class="col-md-10">
+                @Html.DisplayFor(model => model.TotalVagas)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClinicaId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ClinicaId, ViewBag.ClinicaId as SelectList)
+                @Html.ValidationMessageFor(model => model.ClinicaId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataConsulta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataConsulta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataConsulta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NomePaciente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NomePaciente, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NomePaciente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CpfPaciente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CpfPaciente, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CpfPaciente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TemPlano, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.TemPlano)
+                    @Html.ValidationMessageFor(model => model.TemPlano, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumeroConvenio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NumeroConvenio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NumeroConvenio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NomeConvenio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NomeConvenio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NomeConvenio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StatusId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.StatusId, ViewBag.StatusId as SelectList)
+                @Html.ValidationMessageFor(model => model.StatusId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        $(document).ready(configuraControles)
+
+        function configuraControles() {
+            assinarEventoControles()
+            formatarControles()
+
+        }
+
+        function formatarControles() {
+            //$("#DataConsulta").inputmask("mask", { "mask": "99/99/9999" }, { reverse: true });
+            $("#CpfPaciente").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+        }
+        function assinarEventoControles() {
+
+            $("#ClinicaId").change(onChangerClinicaId);
+            $("#DataConsulta").on('focusout', validaDataConsulta)
+
+            function onChangerClinicaId() {
+                validaDataConsulta()
+            }
+            function validaDataConsulta() {
+
+                var dataConsulta = document.getElementById("DataConsulta").value
+                var select = document.getElementById('ClinicaId');
+                var clinicaId = select.options[select.selectedIndex].value;
+
+                console.log(dataConsulta)
+                if (dataConsulta == "")
+                    return;
+
+                $("#TotalVagas").load("@Url.Action("ObterQuantidadeVagas")", { dataConsulta: dataConsulta, clinicaId: clinicaId })
+
+            }
+        }
+
+    </script>
+
+}

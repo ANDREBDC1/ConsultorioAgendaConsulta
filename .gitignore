@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/
+/Consultorio.Dominio/obj/Debug
+/Consultorio.Infra/obj/Debug
+/Consultorio_Web/bin
+/Consultorio_Web/obj/Debug
+/packages

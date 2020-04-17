@@ -1,0 +1,104 @@
+﻿@model Consultorio_Web.ViewsModels.Agendamentos.AgendamentoViewModel
+
+@{
+    ViewBag.Title = "Editar status agendamento";
+}
+
+    <h4>Editar agendamento</h4>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                @Html.HiddenFor(model => model.Id)
+                <dt>
+                    @Html.DisplayNameFor(model => model.StatusId)
+                </dt>
+
+                <dd>
+                    @Html.DropDownListFor(model => model.StatusId, (ViewBag.StatusId as SelectList).Select(op => new SelectListItem 
+               {
+                   Text = op.Text,
+                   Value = op.Value,
+                   Selected = op.Selected
+               }))
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ClinicaNome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ClinicaNome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NomePaciente)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NomePaciente)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CpfPaciente)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CpfPaciente)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TemPlano)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TemPlano)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumeroConvenio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumeroConvenio)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NomeConvenio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NomeConvenio)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DataConsulta)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DataConsulta)
+                </dd>
+            </dl>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="btnSalvar" value="Salvar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+   
+}
