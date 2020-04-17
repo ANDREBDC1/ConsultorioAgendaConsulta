@@ -8,3 +8,5 @@
 /Consultorio_Web/bin
 /Consultorio_Web/obj/Debug
 /packages
+/Consultorio.Infra/bin/Debug
+/Consultorio.Dominio/bin/Debug
