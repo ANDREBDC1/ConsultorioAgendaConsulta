@@ -50,12 +50,12 @@
             $("#btnFiltra").click(onClickBtnFiltra)
 
             function onClickBtnFiltra() {
-                console.log($("#Filtros").serialize())
-                $("#ListaAgendamento").load("@Url.Action("ListaAgendamento")",$("#Filtros").serialize())
+
+                carregarLista()
             }
 
             function carregarLista() {
-                $("#ListaAgendamento").load("@Url.Action("ListaAgendamento")")
+                $("#ListaAgendamento").load("@Url.Action("ListaAgendamento")", $("#Filtros").serialize())
             }
         }
     </script>
